@@ -25,10 +25,10 @@ def play_hangman():
     # TO DO: Find a dictionary or api where to get words
     # TO DO: modify json or input so there's more words (maybe I can
     # get the words from an api
-    with open("words.json") as json_file:
-        json_words = json.load(json_file)
+    with open("data/words.txt") as f:
+        words = f.read()
 
-    word = choice(json_words['words'])
+    word = choice(words.split("\n"))
     word_guessed = False
     attempts = 0
     max_attempts = 10
@@ -37,7 +37,7 @@ def play_hangman():
     # hard: 0 help, medium: 1 character, easy: 2 characters shown
     # difficulty by lenght or characters?
     # character_to_show is a dictionary where the keys are
-    # the word characters and the values are False if 
+    # the word characters and the values are False if
     # that character must not be shown and True otherwise
     for c in set(word):
         characters_to_show[c] = False
